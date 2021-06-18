@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Costa Rica Weather</title>
+  <title>Scraping Stuff</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 
@@ -16,10 +16,16 @@
       <p>Scrape, soup, splinter, mongos!</p>
       <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape</a></p>
     </div>
-    <img src="{{ martian.sloth_img }}" alt="Sloth">
-    <h2>The typical weather in Costa Rica is:</h2>
-    <h3>Max Temp: {{ vacation.max_temp }}</h3>
-    <h3>Min Temp: {{ vacation.min_temp }}</h3>
+  
+    <h2>Latest Mars News:</h2>
+    <h3>{{ martian.news_title }}</h3>
+    <h5>{{ martian.news_para }}</h5>
+    <h2>Featured Image:</h2>
+    <img src="{{ martian.featured_img }}" alt="Featured Image">
+    <h2>Mars Facts:</h2>
+  
+      {{ martian.marsdfcode }}
+
   </div>
   </div>
 </body>

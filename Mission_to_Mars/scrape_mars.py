@@ -2,6 +2,7 @@ from splinter import Browser
 from bs4 import BeautifulSoup as bs
 import time
 from webdriver_manager.chrome import ChromeDriverManager
+import pandas as pd
 
 
 def scrape_info():
@@ -42,6 +43,15 @@ def scrape_info():
     # Visit facts site & Scrape table using pandas
     marsdf = pd.read_html("https://galaxyfacts-mars.com/")[0]
     marsdfcode = marsdf.to_html()
+    
+    # # Visit facts site
+    # url3 = "https://galaxyfacts-mars.com/"
+    # browser.visit(url3)
+    # # Scrape page into Soup
+    # html = browser.html
+    # soup = bs(html, "html.parser")
+    # marsdfcode = soup.find_all('table')[0]
+
     
     
     # Visit Hemisphere + Splinter code to scrape image urls here
