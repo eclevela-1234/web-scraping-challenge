@@ -42,7 +42,7 @@ def scrape_info():
 
     # Visit facts site & Scrape table using pandas
     marsdf = pd.read_html("https://galaxyfacts-mars.com/")[0]
-    marsdfcode = marsdf.to_html()
+    marsdfcode = marsdf.to_html(classes="table table-striped")
     
     # # Visit facts site
     # url3 = "https://galaxyfacts-mars.com/"
@@ -55,6 +55,21 @@ def scrape_info():
     
     
     # Visit Hemisphere + Splinter code to scrape image urls here
+    # Visit hemispheres site
+    url4 = "https://marshemispheres.com/"
+    browser.visit(url4)
+    hemispheres_img_url = []
+
+    image_list = browser.find_by_css('a.product-item img')
+    for i in range (len(image_list)):
+        hemisphere = {}
+        browser.find_by_css('a.product-item img')[i].click()
+        element = browser.links.find_by_text('Sample').first
+        hemisphere["img_url"] = element['href']
+        hemisphere["title"] = browser.find_by_css('h2.title').text
+        hemispheres_img_url.append(hemisphere)
+        browser.back()
+
 
 
     # Store data in a dictionary
@@ -62,7 +77,8 @@ def scrape_info():
         "news_title": news_title,
         "news_para": news_para,
         "featured_img": featured_img,
-        "marsdfcode": marsdfcode
+        "marsdfcode": marsdfcode,
+        "hemispheres": hemispheres_img_url
     }
 
     # Close the browser after scraping
